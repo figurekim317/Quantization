@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 import sys
 sys.path.append("../../../..")
 import os
@@ -126,66 +130,26 @@ def test():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--cpu", action="store_true", help="set if only CPU is available"
-    )
+    parser.add_argument("--cpu", action="store_true", help="set if only CPU is available")
     parser.add_argument("--gpu_id", action="store", default="", help="gpu_id")
-    parser.add_argument(
-        "--data", action="store", default="../../../../data", help="dataset path"
-    )
-    parser.add_argument(
-        "--lr", action="store", default=0.01, help="the intial learning rate"
-    )
-    parser.add_argument(
-        "--wd", action="store", default=1e-5, help="the intial learning rate"
-    )
+    parser.add_argument("--data", action="store", default="../../../../data", help="dataset path")
+    parser.add_argument("--lr", action="store", default=0.01, help="the intial learning rate")
+    parser.add_argument("--wd", action="store", default=1e-5, help="the intial learning rate")
     # prune_qat
-    parser.add_argument(
-        "--prune_qat",
-        default="",
-        type=str,
-        metavar="PATH",
-        help="the path to the prune_qat model",
-    )
+    parser.add_argument("--prune_qat", default="", type=str, metavar="PATH", help="the path to the prune_qat model")
     # refine
-    parser.add_argument(
-        "--refine",
-        default="",
-        type=str,
-        metavar="PATH",
-        help="the path to the float_refine model",
-    )
+    parser.add_argument("--refine", default="", type=str, metavar="PATH", help="the path to the float_refine model")
     # resume
-    parser.add_argument(
-        "--resume",
-        default="",
-        type=str,
-        metavar="PATH",
-        help="the path to the resume model",
-    )
+    parser.add_argument("--resume", default="", type=str, metavar="PATH", help="the path to the resume model",)
     parser.add_argument("--train_batch_size", type=int, default=50)
     parser.add_argument("--eval_batch_size", type=int, default=256)
     parser.add_argument("--num_workers", type=int, default=2)
-    parser.add_argument(
-        "--start_epochs",
-        type=int,
-        default=1,
-        metavar="N",
-        help="number of epochs to train_start",
-    )
-    parser.add_argument(
-        "--end_epochs",
-        type=int,
-        default=300,
-        metavar="N",
-        help="number of epochs to train_end",
-    )
+    parser.add_argument("--start_epochs", type=int, default=1, metavar="N", help="number of epochs to train_start",)
+    parser.add_argument("--end_epochs", type=int, default=300, metavar="N", help="number of epochs to train_end",)
     # W/A — bits
     parser.add_argument("--w_bits", type=int, default=8)
     parser.add_argument("--a_bits", type=int, default=8)
-    parser.add_argument(
-        "--model_type", type=int, default=1, help="model type:0-nin,1-nin_gc"
-    )
+    parser.add_argument("--model_type", type=int, default=1, help="model type:0-nin,1-nin_gc")
     args = parser.parse_args()
     print("==> Options:", args)
 
