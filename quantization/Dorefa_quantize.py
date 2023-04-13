@@ -23,12 +23,10 @@ class ActivationQuantizer(nn.Module):
         super(ActivationQuantizer, self).__init__()
         self.a_bits = a_bits
 
-    # 取整(ste)
     def round(self, input):
         output = Round.apply(input)
         return output
 
-    # 量化/反量化
     def forward(self, input):
         if self.a_bits == 32:
             output = input
