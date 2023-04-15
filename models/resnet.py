@@ -8,8 +8,6 @@
 
 
 
-
-
 import torch.nn as nn
 import math
 from torchvision.models.utils import load_state_dict_from_url
